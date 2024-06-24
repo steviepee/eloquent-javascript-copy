@@ -5,13 +5,9 @@
 function range(start, end, step) {
   let output = [];
 if (step === undefined) {
-  for (let i = start; i <= end; i++) {
-    output.push[i];
-  }
+  for (let i = start; i <= end; i++) {output.push[i]}
 } else if (step < 0) {
-  for (let i = start; i >= end; i += step * -1) {
-    output.push[i];
-  }
+  for (let i = start; i >= end; i += step * -1) {output.push[i]}
 } else {
   for (let i = start; i <= end; i += step) {output.push[i]}
 }
