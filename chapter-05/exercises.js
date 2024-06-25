@@ -2,33 +2,70 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function flatten() {
-
-}
+function flatten(stuff) {
+  end = []
+  output = stuff.reduce(function(acc, current) {
+    answer = acc.concat(current);
+    end.push(answer);
+    return answer;
+  });
+  return output ;
+};
 
 // /////////////////////////////////////////////////////////////////////////////
 // loop ////////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function loop() {
-
-}
+let loop = function(value, testfunc, bodyfunc, updatefunc) {
+  //if the value fails the test, stop everything
+if (!testfunc(value)) {return}
+  //use the update function to set the value
+updatefunc(value)
+  //connect through the body function to create a new value
+  bodyfunc(value);
+  //replace the old value with the new one
+value = bodyfunc(value);
+  //return the loop with the new value
+return loop(value, testfunc, bodyfunc, updatefunc);
+  }
 
 // /////////////////////////////////////////////////////////////////////////////
 // every ///////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function every() {
-
-}
+function every(array, test) {
+  for (i = 0; i < array.length; i++) {
+    if (!test(array[i])) {return false}
+    }
+    return true; 
+  // if (array.some(test)) {return false}
+  // return true;
+  }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
-
+function dominantDirection(text) {
+  let rtl = [];
+  let ltr = [];
+  for (let i = 0; i < text.length; i++) {
+    let script = characterScript(text.charCodeAt(i));
+    if (script !== null) {
+    if (script.direction === 'rtl') {
+      rtl.push(script);
+    } else {
+      ltr.push(script);
+      }
+    }
+    }
+  if (ltr.length > rtl.length) {
+    return 'ltr';
+    } else {
+    return 'rtl';
+    }
 }
+
 
 // /////////////////////////////////////////////////////////////////////////////
 //  //////////////////////////////////////////////////////
