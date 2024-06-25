@@ -119,12 +119,13 @@ function nth(list, number) {
 
 let deepEqual = function(x, y) {
   if (typeof x !== 'object' || typeof y !== 'object') {return x === y}
-  let xkey = Object.keys(x);
-  let ykey = Object.keys(y);
-  if (x.length !== y.length) {return false}
-  for (let m = 0; m < x.length; x++) {
-    if (!ykey[m].includes(xkey[m]) || !deepEqual(x[xkey[m]], y[key[m]]))
+  let xkeys = Object.keys(x);
+  let ykeys = Object.keys(y);
+  if (xkeys.length !== ykeys.length) {return false}
+  for (let i = 0; i < xkeys.length; i++) {
+    if (!ykeys.includes(xkeys[i]) || !deepEqual(x[xkeys[i]], y[ykeys[i]])) {
       return false;
+    }
   }
     return true;
 }
