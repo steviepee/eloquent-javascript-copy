@@ -41,12 +41,21 @@ return output;
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArrayInPlace(array, input=[]) {
-  if (array.length === 0) {
-    array.push(input)
-    return array;
+  // if (array.length === 0 && input.length === 0) {
+  //   return array
+  
+  // }else if (array.length === 0) {
+  //   array.push(input)
+  //   return array;
+  // }
+  // input.unshift(array[0]);
+  // array.shift;
+  // return reverseArrayInPlace(array, input);
+  for (let i = 0; i < array.length; i++) {input.push(array[i])}
+    for (let x = 0; x < array.length; x++) {
+    array[x] = input[input.length - (1 + x)];
   }
-  input.unshift(array[0]);
-  return reverseArrayInPlace(array.slice(1), input);
+  return array
   
 
 }
@@ -89,19 +98,19 @@ function prepend(element, list) {
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth(number, list, counter=0) {
-  if (list.rest === null) {
-    if (counter === number) {
-      return list.value;
-      }
-    return undefined
+function nth(list, number) {
+  let thang = list;
+    if (number === 0) {
+      return thang.value
+    } else if (thang.rest) {
+      if (thang.rest === null) {
+        return undefined
+      } else {
+        thang = thang.rest;
+      return nth(thang, number - 1);
     }
-  if (counter === number) {
-    return list.value
-    } else {
-    counter += 1;
-    }
-  return nth(number, list.rest, counter);
+  }
+  
 };
 
 ////////////////////////////////////////////////////////////////////////////////
