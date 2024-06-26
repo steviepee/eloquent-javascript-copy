@@ -100,58 +100,36 @@ LOGS =>
 function drawChessboard(x) {
   //if x is 1, return null
   if(x <= 1){return null};
-  //create holding variable for the result, as well as some for odd rowe and even rows
+  //create holding variable for the result, as well as some for odd rowe and even rows and a counter
   let output = '';
   let odds = '';
   let evens = '';
-  //create a loop with a nested loop
-  //first loop is for the amount of lines
+  let count = 0;
+  //use for loop to count up to x.
   for (i = 1; i <= x; i++) {
     //when i is odd
     if (i % 2) {
-      //
-      output = `${odds}\n`
+      //add a space to the odds and a # to the evens
       odds += ' ';
       evens += '#';
     } else {//when i is even
-      output+= `${evens}\n`
+      //add a # to the odds and a space to the evens
       evens += ' ';
       odds += '#';
-    }
+    }//add 1 to the count
+    count++;
+  }//when the loop is done, start one counting up to the accumlulated count
+  for (let a = 1; a <= count; a++) {
+    //at each odd iteration, add an odd row with a line break
+    if (a % 2) {
+    output += `${odds}\n`;
+  } else{//on the even iterations, an even row
+    output += `${evens}\n`;
   }
+  }//when this loop ends, return or log the output string
   console.log(output);
     
-  // //create holding string for odd rows(space hash)
-  // let chess = ''
-  // //create holding string for even rows(hash space hash)
-  // let check = ''
-  // //create counting variable to start at 0
-  // let y = 0;
-  // //as long as y is less than half of x
-  // while (y <= Math.trunc(x / 2)) {
-  //   //add one to y
-  //   y++;
-  //   //and add one to odd holding string
-  //   chess += ` #`;
-  //   //and add one to even holding string(?)
-  //   check += `# # `;
-  //   }//create mechanism for counting up to x
-  // for (let i = 0; i <= x; i++) {
-  //   //do nothing if i is 0
-  //   if (i !== 0) {
-  //     //if it's the first row
-  //     //if (i === 1) {
-  //       //put in the odd string's current value and add a line break
-  //     console.log(` ${chess}\n`);
-  //     //on each other odd row
-  //     } else if (i % 2) {
-  //       //put in the odd string's current value and add a line break after
-  //     console.log(` ${chess}\n`);
-  //     } else {//on the evens,use the even string's value with a line break
-  //     console.log(`${chess}\n`);
-  //     }
-  //   }
-  // }
+ 
 }
 
 
